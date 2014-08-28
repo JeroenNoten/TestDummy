@@ -47,7 +47,9 @@ class DynamicAttributeReplacer implements AttributeReplacer {
 	{
 		foreach ($data as $column => $value)
 		{
-			$data[$column] = $this->updateColumnValue($value);
+			if (is_string($value)) {
+				$data[$column] = $this->updateColumnValue($value);
+			}
 		}
 
 		return $data;

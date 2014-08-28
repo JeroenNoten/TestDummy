@@ -28,7 +28,9 @@ class FakerAttributeReplacer implements AttributeReplacer {
     public function replace(array $data)
     {
         foreach ($data as $column => $value) {
-            $data[$column] = $this->updateColumnValue($value);
+			if (is_string($value)) {
+				$data[$column] = $this->updateColumnValue($value);
+			}
         }
 
         return $data;
