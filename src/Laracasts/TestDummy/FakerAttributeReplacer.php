@@ -64,6 +64,11 @@ class FakerAttributeReplacer implements AttributeReplacer {
         if ($fakeObject instanceof DateTime) {
             return $fakeObject->format('Y-m-d H:i:s');
         }
+
+        if (is_bool($fakeObject)) {
+            return (int) $fakeObject;
+        }
+
         return (string)$fakeObject;
     }
 
